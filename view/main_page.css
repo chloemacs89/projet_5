@@ -1,0 +1,51 @@
+body {
+    margin: auto;
+    max-width: 900px;
+}
+
+/* GRID CONTENT */
+
+.main-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.carousel {
+    overflow: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.grid-container {
+    display: grid;
+    grid-gap: 16px;
+    grid-auto-flow: column;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.grid-items {
+    width: 200px;
+    height: 160px;
+    border: 1px solid black;
+}
+
+.prev {
+    margin-right: 10px;
+}
+
+.next {
+    margin-left: 10px;
+}
+
+.prev, .next {
+    border-radius: 50%;
+    border: none;
+    height: 40px;
+    align-self: center;
+}
+
+.prev:hover, .next:hover {
+    background-color: #00fa9a;
+}
