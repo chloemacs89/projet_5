@@ -3,7 +3,7 @@
     <head>
 	<meta charset="utf8">
 	<title>Test de carousel</title>
-	<link rel="stylesheet" href="./test.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="./main_page.css" type="text/css" media="screen" />
     </head>
     <body>
 	<h1>LES MEILLEURS FILMS</h1>
@@ -25,13 +25,27 @@
 	    </button>
 	    <div class="carousel">
 		<div class="grid-container">
-		    <div class="grid-items">1</div>
-		    <div class="grid-items">2</div>
-		    <div class="grid-items">3</div>
-		    <div class="grid-items">4</div>
-		    <div class="grid-items">5</div>
-		    <div class="grid-items">6</div>
-		    <div class="grid-items">7</div>
+		    <div class="grid-items">1
+			<button class="description">Description</button>
+		    </div>
+		    <div class="grid-items">2
+			<button class="description">Description</button>
+		    </div>
+		    <div class="grid-items">3
+			<button class="description">Description</button>
+		    </div>
+		    <div class="grid-items">4
+			<button class="description">Description</button>
+		    </div>
+		    <div class="grid-items">5
+			<button class="description">Description</button>
+		    </div>
+		    <div class="grid-items">6
+			<button class="description">Description</button>
+		    </div>
+		    <div class="grid-items">7
+			<button class="description">Description</button>
+		    </div>
 		</div>
 	    </div>
 	    <button class="next">
@@ -69,8 +83,14 @@
 	    </button>
 	    <div class="carousel">
 		<div class="grid-container">
-		    <div class="grid-items">1</div>
-		    <div class="grid-items">2</div>
+		    <div class="grid-items">
+			1
+			<button class="description">Description</button>
+		    </div>
+		    <div class="grid-items">
+			2
+			<button class="description">Description</button>
+		    </div>
 		    <div class="grid-items">3</div>
 		    <div class="grid-items">4</div>
 		    <div class="grid-items">5</div>
@@ -94,6 +114,12 @@
 		</svg>
 	    </button>
 	</section>
-	<script src="./test.js"></script>
+	<div id="myModal" class="modal">
+	    <div class="modal-content">
+		<span class="close">&times;</span>
+		<p>Texte dans la modal</p>
+	    </div>
+	</div>
+	<script src="../script.js"></script>
     </body>
 </html>
