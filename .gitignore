@@ -3,3 +3,4 @@ env/
 *.*~
 __pycache__
 OCMovies-API-EN-FR
+.tern-port
