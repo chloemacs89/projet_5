@@ -23,8 +23,8 @@ h1 {
 
 .carousel {
     overflow: auto;
+    overflow-x: hidden;
     scroll-behavior: smooth;
-    scrollbar-width: none;
 }
 
 .grid-container {
