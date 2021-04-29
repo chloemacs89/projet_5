@@ -22,6 +22,7 @@ async function getMoviesData(obj) {
     let movies_genre = Object.keys(obj);
     for(let item of movies_genre) {
 	let page = 1;
+	
 	let genre = item;
 	do {
 	    let url = `http://localhost:8000/api/v1/titles?genre=${genre}&page=${page}&sort_by=-votes,-imdb_score`;
@@ -40,7 +41,34 @@ async function getMoviesData(obj) {
     }
 }
 
-getMoviesData(genre);
+
+async function addDateToApp() {
+    await getMoviesData(genre);
+    let movie_genre = Object.keys(genre);
+    for(let movGenre of movie_genre) {
+	let zone = document.getElementById(movGenre);
+	let div = zone.querySelectorAll(".grid-items");
+	for (var i = 0; i < div.length; i++) {
+	    div[i].querySelector("p").textContent = genre[movGenre][i]["title"];
+	    let url = genre[movGenre][i]["image_url"];
+	    div[i].style.backgroundImage = `url(${url})`;
+	}
+    }
+}
+
+addDateToApp();
+
+
+
+// let zone = document.getElementById("Sci-Fi");
+// let div = zone.querySelectorAll(".grid-items");
+// for (var i = 0; i < div.length; i++) {
+//     div[i].querySelector("p").textContent = genre["Sci-Fi"][i]["title"];
+// }
+
+
+
+
 
 // END OF PART ////////////////////////////////////////////////////////////////
 
