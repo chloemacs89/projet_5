@@ -61,19 +61,7 @@ async function addDateToApp() {
     }
 }
 
-addDateToApp();
-
-
-
-// let zone = document.getElementById("Sci-Fi");
-// let div = zone.querySelectorAll(".grid-items");
-// for (var i = 0; i < div.length; i++) {
-//     div[i].querySelector("p").textContent = genre["Sci-Fi"][i]["title"];
-// }
-
-
-
-
+// addDateToApp();
 
 // END OF PART ////////////////////////////////////////////////////////////////
 
@@ -117,11 +105,33 @@ var modal = document.getElementById("myModal");
 const descriptionBtn = document.querySelectorAll(".description");
 var closeBtn = document.getElementsByClassName("close")[0];
 
-for (var j = 0; j < descriptionBtn.length; j++) {
-    descriptionBtn[j].onclick = function(e) {
-	modal.style.display = "block";
-    };
+async function getInfoToModal() {
+    await addDateToApp();
+    for (var j = 0; j < descriptionBtn.length; j++) {
+	let parent = descriptionBtn[j].parentElement;
+	let movieGenre = parent.parentElement.getAttribute("id");
+	let gender = genre[movieGenre];
+	let movieIndex = j % 7;
+	let currentMovie = gender[movieIndex];
+	descriptionBtn[j].onclick = function(e) {
+	    modal.querySelector("p").textContent = currentMovie["title"];
+	    modal.style.display = "block";
+	};
+    }   
 }
+
+getInfoToModal();
+
+// or (var j = 0; j < descriptionBtn.length; j++) {
+//     let parent = descriptionBtn[j].parentElement;
+//     let movieGenre = parent.parentElement.getAttribute("id");
+//     var currentMovie = genre[movieGenre][j];
+//     console.log(currentMovie);
+//     descriptionBtn[j].onclick = function(e) {
+// 	modal.querySelector("p").textContent = currentMovie["title"];
+// 	modal.style.display = "block";
+//     };
+// }
 
 closeBtn.onclick = function(e) {
     modal.style.display = "none";
@@ -133,3 +143,5 @@ window.onclick = function(e) {
 	modal.style.display = "none";
     }
 };
+
+
