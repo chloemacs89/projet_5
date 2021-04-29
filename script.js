@@ -1,3 +1,4 @@
+
 /**
    |--------------------------------------------------
    | GET DATA FROM API PART
@@ -103,7 +104,31 @@ for (var i = 0; i < prev.length; i++) {
 
 var modal = document.getElementById("myModal");
 const descriptionBtn = document.querySelectorAll(".description");
+const gridContent = document.querySelectorAll(".grid-items");
 var closeBtn = document.getElementsByClassName("close")[0];
+
+function dataFromArray(data) {
+    let str = "";
+    for(let item of data) {
+	str += item + ", ";
+    }
+    return str;
+}
+
+
+function setDataInModal(data) {
+    modal.querySelector(".title").textContent = "Titre : " + data["title"];
+    modal.querySelector(".genres").textContent = "Genre(s) : " + dataFromArray(data["genres"]);
+    modal.querySelector(".date_published").textContent = "Date de sortie : " + data["date_published"];
+    modal.querySelector(".rated").textContent = "Classification : " + data["rated"];
+    modal.querySelector(".imdb_score").textContent = "Score IMDB : " + data["imdb_score"];
+    modal.querySelector(".directors").textContent = "Réalisateur(s) : " + dataFromArray(data["directors"]);
+    modal.querySelector(".duration").textContent = "Durée : " + data["duration"] + "min";
+    modal.querySelector(".countries").textContent = "Pays : " + dataFromArray(data["countries"]);
+    modal.querySelector(".worldwide_gross_income")
+	.textContent = "Gains au Box-Office : " + data["worldwide_gross_income"] + "$";
+    modal.querySelector(".actors").textContent = "Acteurs : " + dataFromArray(data["actors"]);
+}
 
 async function getInfoToModal() {
     await addDateToApp();
@@ -113,25 +138,30 @@ async function getInfoToModal() {
 	let gender = genre[movieGenre];
 	let movieIndex = j % 7;
 	let currentMovie = gender[movieIndex];
-	descriptionBtn[j].onclick = function(e) {
-	    modal.querySelector("p").textContent = currentMovie["title"];
+	descriptionBtn[j].onclick = async function(e) {
+	    await fetch("http://localhost:8000/api/v1/titles/" + currentMovie["id"])
+		.then((resp) => (resp.json()))
+		.then(function(data) {
+		    modal.querySelector(".movie_pic").setAttribute("src", data["image_url"]);
+		    setDataInModal(data);
+		    modal.querySelector(".summary").textContent = "Résumé :\n" + data["long_description"];
+		});
 	    modal.style.display = "block";
 	};
+	gridContent[j].onclick = async function(e) {
+	    await fetch("http://localhost:8000/api/v1/titles/" + currentMovie["id"])
+		.then((resp) => (resp.json()))
+		.then(function(data) {
+		    modal.querySelector(".movie_pic").setAttribute("src", data["image_url"]);
+		    setDataInModal(data);
+		    modal.querySelector(".summary").textContent = "Résumé :\n" + data["long_description"];
+		});
+	    modal.style.display = "block";
+	};	
     }   
 }
 
 getInfoToModal();
-
-// or (var j = 0; j < descriptionBtn.length; j++) {
-//     let parent = descriptionBtn[j].parentElement;
-//     let movieGenre = parent.parentElement.getAttribute("id");
-//     var currentMovie = genre[movieGenre][j];
-//     console.log(currentMovie);
-//     descriptionBtn[j].onclick = function(e) {
-// 	modal.querySelector("p").textContent = currentMovie["title"];
-// 	modal.style.display = "block";
-//     };
-// }
 
 closeBtn.onclick = function(e) {
     modal.style.display = "none";
@@ -143,5 +173,3 @@ window.onclick = function(e) {
 	modal.style.display = "none";
     }
 };
-
-
