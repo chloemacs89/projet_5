@@ -5,6 +5,7 @@
 */
 
 var genre = {
+    "Best-movies": [],
     "Sci-Fi": [],
     "Fantasy": [],
     "Horror": []
@@ -22,10 +23,14 @@ async function getMoviesData(obj) {
     let movies_genre = Object.keys(obj);
     for(let item of movies_genre) {
 	let page = 1;
-	
-	let genre = item;
 	do {
-	    let url = `http://localhost:8000/api/v1/titles?genre=${genre}&page=${page}&sort_by=-votes,-imdb_score`;
+	    if (item == "Best-movies") {
+		var url = `http://localhost:8000/api/v1/titles?page=${page}&sort_by=-votes,-imdb_score`;
+	}
+	    else {
+		let genre = item;
+		var url = `http://localhost:8000/api/v1/titles?genre=${genre}&page=${page}&sort_by=-votes,-imdb_score`;
+	}
 	    await fetch(url)
 		.then((resp) => (resp.json()))
 		.then(function(data) {
