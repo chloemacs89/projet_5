@@ -108,11 +108,7 @@ const gridContent = document.querySelectorAll(".grid-items");
 var closeBtn = document.getElementsByClassName("close")[0];
 
 function dataFromArray(data) {
-    let str = "";
-    for(let item of data) {
-	str += item + ", ";
-    }
-    return str;
+    return data.join(", ");
 }
 
 
