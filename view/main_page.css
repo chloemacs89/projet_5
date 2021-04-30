@@ -7,6 +7,10 @@ body {
     max-width: 900px;
     background-color: #0D1117;
     color: #00Fa9a;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 h1 {
@@ -23,17 +27,14 @@ header {
     align-items: flex-end;
 }
 
-.nav_menu ul {
+.nav_menu {
     display: flex;
-    list-style-type: none;
     margin-right: 20px;
 }
 
-.nav_menu li {
-    margin-right: 15px;
-}
-
 .nav_menu a {
+    margin-right: 15px;
+    margin-bottom: 10px;
     color: #00FA9A;
     font-size: 1.3em;
     text-decoration: none;
@@ -43,9 +44,64 @@ header {
 
 .nav_menu a:hover {
     color: #00FFFF;
-    border-bottom: 1px solid #00FFFF;
 
 }
+
+/* DROP DOWN CATEGORIES PART */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    font-size: 0.8em;
+    width: 115px;
+    padding: 5px;
+    border: 1px solid #00FFFF;
+    background-color: rgba(13,17,23,0.8);
+
+}
+
+.dropdown-content a {
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(0,255,255,0.1);
+}
+
+/* BEST MOVIE BOX */
+
+#best-movie-div {
+    flex-grow: 3;
+    border: #00FFFF 1px solid;
+    display: flex;
+    justify-content: space-between;
+}
+
+#best-movie-div img {
+    order: 2;
+}
+
+#best-movie-div h2 {
+    align-self: center;
+    order: 1;
+}
+
+#best-movie-btn {
+    align-self: flex-end;
+    order: 3;
+}
+
+
 
 /* GRID CROUSEL CONTENT */
 
