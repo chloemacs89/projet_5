@@ -17,9 +17,9 @@ var best_movie;
 fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score")
     .then((resp) => resp.json())
     .then(function(data) {
-	    best_movie = data["results"][0];
+	best_movie = data["results"][0];
         document.querySelector("#best-movie-div img").setAttribute("src", best_movie["image_url"]);
-        document.querySelector("#best-movie-div h2").textContent = best_movie["title"];
+        document.querySelector("#best-movie-div div").textContent = best_movie["title"];
     });
 
 async function getMoviesData(obj) {
@@ -158,6 +158,19 @@ async function getInfoToModal() {
 	};
     }
 }
+
+document.getElementById("best-movie-btn")
+    .addEventListener("click", async function(e) {
+	await fetch("http://localhost:8000/api/v1/titles/" + best_movie["id"])
+	    .then((resp) => (resp.json()))
+	    .then(function(data) {
+		modal.querySelector(".movie_pic").setAttribute("src", data["image_url"]);
+		setDataInModal(data);
+		modal.querySelector(".summary").textContent = "Résumé :\n" + data["long_description"];
+	    });
+	modal.style.display = "block";
+    });
+
 
 getInfoToModal();
 
