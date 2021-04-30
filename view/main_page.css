@@ -13,6 +13,40 @@ h1 {
     font-family: "Raleway", sans-serif;
 }
 
+/* HEADER PART */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: #00FA9A 1px solid;
+    align-items: flex-end;
+}
+
+.nav_menu ul {
+    display: flex;
+    list-style-type: none;
+    margin-right: 20px;
+}
+
+.nav_menu li {
+    margin-right: 15px;
+}
+
+.nav_menu a {
+    color: #00FA9A;
+    font-size: 1.3em;
+    text-decoration: none;
+    font-family: "Raleway", sans-serif;
+    font-weight: bolder;
+}
+
+.nav_menu a:hover {
+    color: #00FFFF;
+    border-bottom: 1px solid #00FFFF;
+
+}
+
 /* GRID CROUSEL CONTENT */
 
 .main-section {
