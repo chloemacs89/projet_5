@@ -13,7 +13,7 @@ body {
     margin-top: 30px;
 }
 
-h1 {
+h1, #best-movie-div div {
     font-family: "Raleway", sans-serif;
 }
 
@@ -85,12 +85,19 @@ header {
     border: #00f9a9 1px solid;
     display: flex;
     justify-content: space-between;
+    width: 100%;
     position: relative;
 }
 
 
-#best-movie-div h2 {
-
+#best-movie-div div {
+    flex-grow: 3;
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 #best-movie-btn {
