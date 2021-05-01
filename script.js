@@ -14,7 +14,7 @@ var genre = {
 
 var best_movie;
 
-fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score")
+fetch("http://localhost:8000/api/v1/titles?sort_by=-votes,-imdb_score")
     .then((resp) => resp.json())
     .then(function(data) {
 	best_movie = data["results"][0];
